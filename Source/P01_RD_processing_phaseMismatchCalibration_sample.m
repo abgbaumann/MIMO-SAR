@@ -1,0 +1,63 @@
+%% The following script is a sample script for processing radar data
+%  acquired with a TIDEP-01012 system and compute the calibration matrices
+%  required for correct post-processing of the radar acquisitions.
+
+%% Clear everything
+close all
+clearvars
+clc
+
+%% Initalisation
+[file_dir,~,~] = fileparts(matlab.desktop.editor.getActiveFilename);
+addpath(genpath(fullfile(file_dir)));
+
+
+% proj_list = {'MIMO_A77_phaseMismatchCalibration_20220805',...
+%              'MIMO_B77_phaseMismatchCalibration_20220805'...
+%              'MIMO_C77_phaseMismatchCalibration_20220805'...
+%              };
+
+proj_list = {'MIMO_A77_phaseMismatchCalibration_20220811';...
+             'MIMO_B77_phaseMismatchCalibration_20220811';...
+             };
+
+% trg_rng_list = [27.0,...
+%                 27.0,...
+%                 27.0...
+%                 ];
+% 
+% trg_rng_list = [113.7,...
+%                 113.7,...
+%                 ];
+% 
+% trg_rng_list = [44.8,...
+%                 44.8,...
+%                 ];
+
+trg_rng_list = [11,...
+                11,...
+                ];
+
+% frame_list = {3000:100:18000;...
+%               3000:100:18000;...
+%               3000:100:18000;...
+%               };
+
+frame_list = {3000:100:18000;...
+              3000:100:18000;...
+              };
+
+%% Processing Antenna Calibration
+for p_i = 1:length(proj_list)
+
+    name2proj = proj_list{p_i};
+    path2proj = fullfile(file_dir,'D00_sample_data','real',name2proj);
+    
+    trg_rng = trg_rng_list(p_i); % Distance to Corner Cube: 12, 17, 27 [m]
+    frame_ids = frame_list{p_i}; % Frame No. [-]
+
+    [path2calibMatDir] = cascade_MIMO_00A_calibration_phaseMismatch(path2proj, trg_rng, frame_ids);
+    
+    [path2calibMatComb] = cascade_MIMO_00B_calibration_phaseMismatch_combine(path2calibMatDir);
+
+end
