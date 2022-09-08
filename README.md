@@ -26,7 +26,7 @@ The code and be used directly after cloning this repository and opening in MATLA
 If you found this code useful, please consider citing:
 
 ```diff
-@inproceedings{baumann2022,
+@article{baumann2022,
   Author = {Andreas Baumann-Ouyang and Jemil Avers Butt and Andreas Wieser},
   Title = {Concurrently operating MIMO-SAR sensors to derive 3D displacement vectors},
   Journal  = {Journal of Applied Geodesy},
