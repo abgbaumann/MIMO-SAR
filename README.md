@@ -1,6 +1,6 @@
 # Data Processing of Multiple Input Multiple Output - Synthetic Aperture Radar (MIMO-SAR) acquistions
 
-This repository provides the functions and scripts for processing radar acquisitions, especially the ones acquired with Texas Instruments TIDEP-01012 device. The codes provided in this repository have been use in the following publications:
+This repository provides the functions and scripts for processing radar acquisitions, especially the ones acquired with the Texas Instruments TIDEP-01012 device. The codes provided in this repository have been used in the following publications:
 
 ### [MIMO-SAR Interferometric Measurements for Structural Monitoring: Accuracy and Limitations](https://www.mdpi.com/2072-4292/13/21/4290/htm)
 
