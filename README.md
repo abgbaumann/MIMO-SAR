@@ -14,6 +14,10 @@ This repository provides the functions and scripts for processing radar acquisit
 
 [Andreas Baumann-Ouyang](https://orcid.org/0000-0002-8306-3642), [Jemil Avers Butt](https://orcid.org/0000-0002-0858-2813), and [Andreas Wieser](https://orcid.org/0000-0001-5804-2164)
 
+### [MIMO-SAR Interferometric Measurements for Wind Turbine Tower Deformation Monitoring]()
+
+[Andreas Baumann-Ouyang](https://orcid.org/0000-0002-8306-3642), [Jemil Avers Butt](https://orcid.org/0000-0002-0858-2813), [Matej Varga](https://orcid.org/0000-0002-3453-169X), and [Andreas Wieser](https://orcid.org/0000-0001-5804-2164)
+
 
 ### Environment Setup
 
@@ -23,7 +27,7 @@ The code and be used directly after cloning this repository and opening in MATLA
 
 ### Citation
 
-If you found this code useful, please consider citing:
+If you found this code useful, please consider citing one of the following papers:
 
 ```diff
 @article{baumann2022,
@@ -32,5 +36,15 @@ If you found this code useful, please consider citing:
   Journal  = {Journal of Applied Geodesy},
   Year = {2022},
   Publisher = {de Gruyter}
+}
+```
+
+```diff
+@article{baumann2023,
+  Author = {Andreas Baumann-Ouyang and Matej Varga and Jemil Avers Butt and Andreas Wieser},
+  Title = {MIMO-SAR Interferometric Measurements for Wind Turbine Tower Deformation Monitoring},
+  Journal  = {Energies},
+  Year = {2023},
+  Publisher = {MDPI}
 }
 ```
