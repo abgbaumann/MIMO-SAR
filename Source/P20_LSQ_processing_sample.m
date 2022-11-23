@@ -109,6 +109,11 @@ for d_i =  1:length(path_files)
         fileName{end+1} = 'spatial_spline';
         Desc{end+1} =  sprintf('Spatial non-parametric LSQ (%.2f-%.2f)',cov(1,1),cov(1,2));
         
+
+        [D_adj{end+1}, L_adj{end+1}] = LSQ_Spatial_Spline2(L,E,C,S,cov);
+        fileName{end+1} = 'spatial_spline';
+        Desc{end+1} =  sprintf('Spatial non-parametric LSQ2 (%.2f-%.2f)',cov(1,1),cov(1,2));
+
         %% Store Results
         path_mat = fullfile(path_out,...
                             sprintf('LSQ_Advanced.mat'));
@@ -146,7 +151,7 @@ for d_i =  1:length(path_files)
             N_time = size(L,3);
             vector_scale = 1000;
     
-            for fi = 1:length(fileName)
+            for fi = 4%1:length(fileName)
                 pt_list = 1:5:N_pt;
     
                 writerObj = VideoWriter(fullfile(path_out,sprintf('DefVideo_LOS_%s',fileName{fi})));
