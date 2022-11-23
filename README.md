@@ -23,7 +23,7 @@ This repository provides the functions and scripts for processing radar acquisit
 
 The code is provided in m-files, which is native to the MATLAB software. All the scripts have been tested on the MATLAB R2022a version but should also run for R2021a and higher. 
 
-The code can be used directly after cloning this repository and opening in MATLAB. If the video tracking function is used then  is recommend
+The code can be used directly after cloning this repository and opening in MATLAB. If the video tracking function is used, then is recommend to download and install davinci_draw_R2017a from http://davinci-draw.com/documentation/installation_and_quick_start/ to visualise the north arrow and some axes arrows.
 
 ### Citation
 
