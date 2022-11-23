@@ -147,7 +147,7 @@ function [path2ts] = cascade_MIMO_03_psi2timeseries(path2proj,time_select,filt_b
     sp_mat = reshape([1:N_col*create_aoi],N_col,[])';
     sp_aoi = 2;
     
-    theta = 63*pi/180;%data.radar.orientation(2)*pi/180;
+    theta = data.radar.orientation(2)*pi/180;%data.radar.orientation(2)*pi/180;
     R = [cos(theta) sin(theta); -sin(theta) cos(theta)];
     coord = R * [data.y_axis,data.x_axis]';
     y_rot = coord(1,:)';
@@ -171,17 +171,17 @@ function [path2ts] = cascade_MIMO_03_psi2timeseries(path2proj,time_select,filt_b
         sp_id = sp_mat(aoi_i,sp_aoi:end);
         ax(aoi_i+1) = subplot(create_aoi,N_col,sp_id(:));
         hold on
-        idx = get_idx_in_aoi(data.y_axis,...
+        idx{aoi_i,1} = get_idx_in_aoi(data.y_axis,...
                              data.x_axis,...
                              {aoi{aoi_i}});
-        data_aoiX = data_visX(idx,:);
+        data_aoiX = data_visX(idx{aoi_i},:);
         [N_bin,N_time] = size(data_aoiX);
         data_aoiX_mean = mean(data_aoiX,1);
 
-        data_aoiY = data_visY(idx,:);
+        data_aoiY = data_visY(idx{aoi_i},:);
         data_aoiY_mean = mean(data_aoiY,1);
 
-        data_aoiZ = data_visZ(idx,:);
+        data_aoiZ = data_visZ(idx{aoi_i},:);
         data_aoiZ_mean = mean(data_aoiZ,1);
 
         N_Hz_is = 1/seconds(data.time_rel_interf(2)-data.time_rel_interf(1));
@@ -201,6 +201,7 @@ function [path2ts] = cascade_MIMO_03_psi2timeseries(path2proj,time_select,filt_b
 
         axes(ax(1));
         coord2 = R * [aoi{aoi_i}(:,1),aoi{aoi_i}(:,2)]';
+        aoi_rot{aoi_i,1} = coord2';
         pgon = polyshape(coord2(1,:),coord2(2,:));
         plot(pgon,'FaceColor','none','EdgeColor','y');
 
@@ -227,8 +228,17 @@ function [path2ts] = cascade_MIMO_03_psi2timeseries(path2proj,time_select,filt_b
     exportgraphics(fig,path2fig,'Resolution',600);
     savefig(fig,replace(path2fig,'.png','.fig'));
 
-    save(replace(path2fig,'.png','.mat'),'data_ts');
-
-%end
+    data_aoi.aoi_idx = idx;
+    data_aoi.x_axis = data.x_axis;
+    data_aoi.y_axis = data.y_axis;
+    data_aoi.desc = desc;
+    data_aoi.aoi = aoi;
+    data_aoi.aoi_rot = aoi_rot;
+    data_ts.coh = data.coh;
+    data_ts.coh_std = data.coh_std;
+    data_ts.asi = data.asi;
+    data_ts.ampl = data.ampl;
+    
+    save(replace(path2fig,'.png','.mat'),'data_ts','data_aoi');
 end
 

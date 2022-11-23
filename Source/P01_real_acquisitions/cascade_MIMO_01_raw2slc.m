@@ -378,9 +378,22 @@ function [] = cascade_MIMO_01_raw2slc(path2proj,filt_by_dist,filt_by_azi,filt_by
         end
     
         if filt_by_azi{1}
-            fprintf('- Azimuth Limits (%.1f - %.1f deg)\n',filt_by_azi{2},filt_by_azi{3});
             azi = atan2(y_axis(:,1),x_axis(:,1)) * 180 / pi;
-            idx_rmv = azi<filt_by_azi{2} | azi>filt_by_azi{3};
+            if length(filt_by_azi) == 2
+                fprintf('- Azimuth Limits (-%.1f - %.1f deg)\n',...
+                                abs(filt_by_azi{2}),...
+                                abs(filt_by_azi{2}));
+                filt_azi = abs(azi)<=abs(filt_by_azi{2});
+            else
+                fprintf('- Azimuth Limits (%.1f - %.1f deg)\n',...
+                                min(filt_by_azi{2:3}),...
+                                max(filt_by_azi{2:3}));
+                filt_azi = azi >= min(filt_by_azi{2:3}) & ...
+                           azi <= max(filt_by_azi{2:3});
+            end
+
+            idx_rmv = ~filt_azi;
+            %idx_rmv = azi<filt_by_azi{2} | azi>filt_by_azi{3};
             x_axis(idx_rmv,:) = []; 
             y_axis(idx_rmv,:) = []; 
             complex_data_static(idx_rmv,:,:) = [];

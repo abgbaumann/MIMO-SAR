@@ -137,6 +137,7 @@ function [] = cascade_MIMO_02_slc2psi(path2proj,...
     else
         idx_keep = ones(size(timestamp_abs));
     end
+    idx_keep = logical(idx_keep);
     
     cplx = cplx(:,idx_keep);
     timestamp_abs = timestamp_abs(idx_keep);
