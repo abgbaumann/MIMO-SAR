@@ -10,7 +10,7 @@ This repository provides the functions and scripts for processing radar acquisit
 
 [Andreas Baumann-Ouyang](https://orcid.org/0000-0002-8306-3642), [Jemil Avers Butt](https://orcid.org/0000-0002-0858-2813), and [Andreas Wieser](https://orcid.org/0000-0001-5804-2164)
 
-### [Concurrently operating MIMO-SAR sensors to derive 3D displacement vectors]()
+### [Estimating 3D displacement vectors from line-of-sight observations with application to MIMO-SAR](https://doi.org/10.1515/jag-2022-0035)
 
 [Andreas Baumann-Ouyang](https://orcid.org/0000-0002-8306-3642), [Jemil Avers Butt](https://orcid.org/0000-0002-0858-2813), and [Andreas Wieser](https://orcid.org/0000-0001-5804-2164)
 
@@ -31,11 +31,12 @@ If you found this code useful, please consider citing one of the following paper
 
 ```diff
 @article{baumann2022,
-  Author = {Andreas Baumann-Ouyang and Jemil Avers Butt and Andreas Wieser},
-  Title = {Concurrently operating MIMO-SAR sensors to derive 3D displacement vectors},
+  Author = {Baumann-Ouyang, Andreas and Butt, Jemil Avers and Wieser, Andreas},
+  Title = {Estimating 3D displacement vectors from line-of-sight observations with application to MIMO-SAR},
   Journal  = {Journal of Applied Geodesy},
   Year = {2023},
-  Publisher = {de Gruyter}
+  Publisher = {de Gruyter},
+  DOI = {10.1515/jag-2022-0035}
 }
 ```
 
